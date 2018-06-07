@@ -19,7 +19,7 @@ class KNearestNeighbor:
         num_test = X.shape[0]
         num_train = self.X_train.shape[0]
         dists = np.zeros((num_test, num_train))
-        test_sum = np.sum(np.square(self.X), axis=1)
+        test_sum = np.sum(np.square(X), axis=1)
         train_sum = np.sum(np.square(self.X_train), axis=1)
         inner_product = np.dot(X, self.X_train.T)
         dists = np.sqrt(-2*inner_product + test_sum.reshape(-1, 1) + train_sum)

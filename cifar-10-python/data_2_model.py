@@ -66,9 +66,14 @@ print("x_test的shape：", x_test.shape)
 
 
 
+
 # 3.2) 测试集预测
 classifier = KNearestNeighbor()
 classifier.train(x_train, y_train)
 dists=classifier.compute_distances_no_loops(x_test)
 print(dists)
 
+y_test_pred = classifier.predict_labels(dists, k=1)
+num_correct = np.sum(y_test_pred == y_test)
+accuracy = float(num_correct) / num_test
+print( 'got %d / %d correct => accuracy: %f' % (num_correct, num_test, accuracy))
